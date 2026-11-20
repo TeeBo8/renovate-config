@@ -17,6 +17,7 @@ Configuration Renovate commune à tous les repos TeeBo8 (`default.json`). Chaque
 - Next.js, `eslint-config-next` et `@next/*` partent dans une seule PR par projet.
 - Une version n'est proposée qu'après 1 jour de publication (protection contre une version piégée ou retirée).
 - Les autres dépendances ne sont pas suivies pour l'instant (`enabled: false`) : pour en ajouter, ajouter une règle ici, ça vaut pour tous les repos.
+- Renovate régénère les lockfiles avec **pnpm 10**, comme Vercel (`constraints`). Sans ça, il prenait pnpm 11, qui ignore les réglages `"pnpm"` du package.json (ex. `overrides`) : le lockfile ne correspondait plus et `pnpm install` échouait sur Vercel (lesclesducredits, 2026-11-20).
 - Chaque repo a un ticket « Dependency Dashboard » qui liste ce qui est en attente.
 
 Pour changer une règle : modifier `default.json` ici, c'est tout.

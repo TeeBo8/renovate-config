@@ -1,39 +1,67 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "description": "Mises à jour de Next.js sur tous les projets TeeBo8 (option a, décidée le 2026-11-20)",
-  "extends": ["config:recommended"],
+  "extends": [
+    "config:recommended"
+  ],
   "timezone": "Europe/Paris",
   "dependencyDashboard": true,
   "platformAutomerge": false,
+  "constraints": {
+    "pnpm": "^10"
+  },
   "packageRules": [
     {
       "description": "Seul Next.js est suivi pour l'instant : le reste des dépendances ne génère aucune PR",
-      "matchPackageNames": ["*"],
+      "matchPackageNames": [
+        "*"
+      ],
       "enabled": false
     },
     {
       "description": "Next.js et ses paquets liés, dans une seule PR par projet",
-      "matchPackageNames": ["next", "eslint-config-next", "@next/**"],
+      "matchPackageNames": [
+        "next",
+        "eslint-config-next",
+        "@next/**"
+      ],
       "enabled": true,
       "groupName": "Next.js",
       "minimumReleaseAge": "1 day",
-      "labels": ["next.js"]
+      "labels": [
+        "next.js"
+      ]
     },
     {
       "description": "Correctifs (16.4.2 → 16.4.6) : fusion automatique si la preview Vercel est verte, sur tous les repos, clients compris",
-      "matchPackageNames": ["next", "eslint-config-next", "@next/**"],
-      "matchUpdateTypes": ["patch"],
+      "matchPackageNames": [
+        "next",
+        "eslint-config-next",
+        "@next/**"
+      ],
+      "matchUpdateTypes": [
+        "patch"
+      ],
       "automerge": true
     },
     {
       "description": "Versions mineures et majeures : PR ouverte, fusion par un humain (majeures via /maj-next)",
-      "matchPackageNames": ["next", "eslint-config-next", "@next/**"],
-      "matchUpdateTypes": ["minor", "major"],
+      "matchPackageNames": [
+        "next",
+        "eslint-config-next",
+        "@next/**"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "major"
+      ],
       "automerge": false
     }
   ],
   "vulnerabilityAlerts": {
     "enabled": true,
-    "labels": ["sécurité"]
+    "labels": [
+      "sécurité"
+    ]
   }
 }
